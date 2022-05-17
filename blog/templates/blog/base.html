@@ -1,46 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %}Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
 
-            {% extends 'blog/base.html' %}
+    <script src="https://kit.fontawesome.com/3e4cbd00ba.js" crossorigin="anonymous"></script>
 
+</head>
+<body>
+
+{% include 'blog/navbar.html' %}
+
+<div class="container my-3">
+    <dic class="row">
+        <div class="col-md-8 col-lg-9" id="main-area">
             {% block main_area %}
-
-            <h1>Blog</h1>
-
-            {% if post_list.exists %}
-
-            {% for p in post_list %}
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        {% if p.head_image %}
-                        <img class="card-img-top" src="{{ p.head_image.url }}" alt="{[ p }} head image">
-                        {% else %}
-                        <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/750/350" alt="random_image">
-                        {% endif %}
-                        <div class="card-body">
-                            <h2 class="card-title">{{ p.title }}</h2>
-                            {% if p.hook_text %}
-                                <h5 class="text-muted">{{ p.hook_text }}</h5>
-                            {% endif %}
-                            <p class="card-text">{{ p.content | truncatechars:45 }}</p>
-                            <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read more →</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            Posted on {{ p.created_at }} by
-                            <a href="#">취한 돼지</a>
-                        </div>
-                    </div>
-            {% endfor %}
-            {% else %}
-                <h3>아직 게시물이 음따!!</h3>
-            {% endif %}
-            <!-- Pagination-->
-                <ul class="pagination justify-content-center mb-4">
-                    <li class="page-item">
-                        <a class="page-link" href="#">&larr; Older</a>
-                    </li>
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">Newer &rarr;</a>
-                    </li>
-                </ul>
             {% endblock %}
                 </div>
                 <div class="col-md-4 col-lg-3">
@@ -87,15 +63,8 @@
         </div>
     </div>
 </div>
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">
-            Copyright &copy; Do It Django A to Z 2022
-        </p>
-    </div>
-    <!-- /.container-->
-</footer>
+
+{% include 'blog/footer.html' %}
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
