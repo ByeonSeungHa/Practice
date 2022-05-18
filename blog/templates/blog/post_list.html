@@ -3,7 +3,7 @@
 
             {% block main_area %}
 
-            <h1>Blog</h1>
+            <h1>Blog {% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}</h1>
 
             {% if post_list.exists %}
 
@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-footer text-muted">
                             Posted on {{ p.created_at }} by
-                            <a href="#">취한 돼지</a>
+                            <a href="#">{{ p.author | upper }}</a>
                         </div>
                     </div>
             {% endfor %}
