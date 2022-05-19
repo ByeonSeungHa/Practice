@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'markdownx',
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -138,6 +139,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+
     'allauth.account.auth_backends.AuthenticationBackend',
 
 )
